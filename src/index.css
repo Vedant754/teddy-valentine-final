@@ -1,0 +1,265 @@
+/* ================== GLOBAL RESET ================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #fff0f6);
+  overflow-x: hidden;
+}
+
+/* ================== LAYOUT ================== */
+.container {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* ================== INTRO SCREEN ================== */
+.intro-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.intro {
+  font-size: clamp(28px, 8vw, 42px);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: clamp(16px, 4.5vw, 22px);
+  margin: 15px 0 30px;
+  color: #555;
+}
+
+/* Background floating hearts */
+.bg-hearts {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-hearts span {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0.15;
+  animation: floatUp 14s linear infinite;
+}
+
+/* Bigger heart sizes */
+.bg-hearts span:nth-child(1) {
+  left: 10%;
+  font-size: 48px;
+  animation-delay: 0s;
+}
+.bg-hearts span:nth-child(2) {
+  left: 25%;
+  font-size: 42px;
+  animation-delay: 3s;
+}
+.bg-hearts span:nth-child(3) {
+  left: 40%;
+  font-size: 52px;
+  animation-delay: 6s;
+}
+.bg-hearts span:nth-child(4) {
+  left: 55%;
+  font-size: 44px;
+  animation-delay: 2s;
+}
+.bg-hearts span:nth-child(5) {
+  left: 70%;
+  font-size: 50px;
+  animation-delay: 5s;
+}
+.bg-hearts span:nth-child(6) {
+  left: 85%;
+  font-size: 46px;
+  animation-delay: 8s;
+}
+
+/* Keep content above hearts */
+.intro-screen > *:not(.bg-hearts) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================== QUESTION ================== */
+.question {
+  font-size: clamp(20px, 6vw, 32px);
+  margin: 20px 0;
+}
+
+/* ================== BUTTONS ================== */
+.buttons-wrapper {
+  margin-top: 30px;
+  min-height: 160px; /* prevents overlap with question */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+button {
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  font-size: clamp(16px, 4.5vw, 20px);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* YES BUTTON */
+.yes-btn {
+  background: #ff5c8d;
+  color: white;
+  transform-origin: center top; /* grows downward */
+}
+
+/* NO BUTTON */
+.no-btn {
+  background: #e0e0e0;
+  animation: shake 0.4s infinite;
+}
+
+/* ================== TEDDY ================== */
+.teddy {
+  width: min(70vw, 220px);
+  margin-bottom: 10px;
+  animation: bounce 1.5s infinite;
+}
+
+.teddy.sad {
+  animation: droop 1.5s infinite;
+}
+
+.teddy.verySad {
+  animation: shake 0.6s infinite;
+}
+
+.teddy.love {
+  animation: popBig 0.8s ease forwards;
+}
+
+/* ================== LOVE SCREEN ================== */
+.love h1 {
+  font-size: clamp(26px, 7vw, 40px);
+  color: #ff4d6d;
+}
+
+.floating-hearts {
+  margin-top: 20px;
+  font-size: 28px;
+  animation: float 2s infinite alternate;
+}
+
+/* ================== QR SECTION ================== */
+.qr-section {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1.8s ease forwards;
+}
+
+.qr-text {
+  font-size: clamp(16px, 4.5vw, 20px);
+  margin-bottom: 15px;
+  color: #ff4d6d;
+}
+
+.qr-text span {
+  display: block;
+}
+
+/* ================== ANIMATIONS ================== */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes droop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes popBig {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-120vh);
+  }
+}

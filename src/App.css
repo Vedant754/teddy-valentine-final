@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #fff0f6);
+}
+
+.container {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Intro */
+/* Intro screen hearts */
+.intro-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-hearts {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-hearts span {
+  position: absolute;
+  font-size: 40px;              /* ⬅️ Increased size */
+  opacity: 0.18;
+  animation: floatUp 12s linear infinite;
+}
+
+/* Random positions */
+.bg-hearts span:nth-child(1) { left: 10%; animation-delay: 0s;font-size: 48px;  }
+.bg-hearts span:nth-child(2) { left: 25%; animation-delay: 2s;  font-size: 52px; }
+.bg-hearts span:nth-child(3) { left: 40%; animation-delay: 4s;  font-size: 44px; }
+.bg-hearts span:nth-child(4) { left: 55%; animation-delay: 1s;  font-size: 50px; }
+.bg-hearts span:nth-child(5) { left: 70%; animation-delay: 3s;  font-size: 46px;}
+.bg-hearts span:nth-child(6) { left: 85%; animation-delay: 5s;  font-size: 42px;}
+
+@keyframes floatUp {
+  from {
+    bottom: -40px;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    bottom: 110%;
+    transform: translateY(-100vh) scale(1.05);
+  }
+}
+
+
+/* Ensure content stays above hearts */
+.intro-screen > *:not(.bg-hearts) {
+  position: relative;
+  z-index: 1;
+}
+
+.intro {
+  font-size: clamp(28px, 8vw, 42px);
+}
+
+.subtitle {
+  font-size: clamp(16px, 4.5vw, 22px);
+  margin: 15px 0 25px;
+  color: #555;
+}
+
+/* Question */
+.question {
+  font-size: clamp(20px, 6vw, 32px);
+  margin: 20px 0;
+}
+
+/* Buttons */
+
+.buttons-wrapper {
+  margin-top: 30px;
+  min-height: 140px; /* reserves space for growing Yes button */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+button {
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.yes-btn {
+  background: #ff5c8d;
+  color: white;
+  transform-origin: center top; /* 👈 grows downward */
+}
+
+.no-btn {
+  background: #e0e0e0;
+  animation: shake 0.4s infinite;
+}
+
+/* Teddy */
+.teddy {
+  width: min(70vw, 220px);
+  margin-bottom: 10px;
+  animation: bounce 1.5s infinite;
+}
+
+.teddy.sad {
+  animation: droop 1.5s infinite;
+}
+
+.teddy.verySad {
+  animation: shake 0.6s infinite;
+}
+
+.teddy.love {
+  animation: popBig 0.8s ease forwards;
+}
+
+/* Love Screen */
+.love h1 {
+  font-size: clamp(26px, 7vw, 40px);
+  color: #ff4d6d;
+}
+
+.floating-hearts {
+  margin-top: 20px;
+  font-size: 28px;
+  animation: float 2s infinite alternate;
+}
+
+/* QR */
+.qr-section {
+  margin-top: 30px;
+  animation: fadeIn 2s ease forwards;
+}
+
+.qr-text {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #ff4d6d;
+}
+
+.qr-text span {
+  display: block;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes droop {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes popBig {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-15px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
